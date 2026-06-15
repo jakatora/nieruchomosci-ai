@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+ios/
+android/
+
+# EAS
+.easignore

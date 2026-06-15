@@ -1,0 +1,66 @@
+workflows:
+  ios-build:
+    name: NieruchomosciAI iOS — TestFlight
+    max_build_duration: 90
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic App Manager   # Key #2 W9Z5F63UJP (App Manager)
+    environment:
+      groups:
+        - certificate_credentials                # CERTIFICATE_PRIVATE_KEY (Team-level globalny)
+        - app_store                              # APP_STORE_APPLE_ID (per-apka)
+      vars:
+        BUNDLE_ID: "pl.nieruchomosciai.app"
+        XCODE_WORKSPACE: "mobile/ios/NieruchomosciAI.xcworkspace"
+        XCODE_SCHEME: "NieruchomosciAI"
+      node: 20
+      xcode: latest
+      cocoapods: default
+    cache:
+      cache_paths:
+        - $HOME/Library/Caches/CocoaPods
+        - $HOME/.npm
+        - $CM_BUILD_DIR/mobile/node_modules
+    scripts:
+      - name: Install mobile deps
+        script: cd mobile && npm ci --no-audit --no-fund
+      - name: Expo prebuild iOS
+        script: cd mobile && npx expo prebuild --platform ios --clean --no-install
+      - name: Update CocoaPods to latest
+        script: sudo gem install cocoapods --no-document && pod --version
+      - name: Pod install
+        script: cd mobile/ios && pod install --repo-update
+      - name: Initialize keychain
+        script: keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+      - name: Add certificates to keychain
+        script: keychain add-certificates
+      - name: Apply signing settings
+        script: xcode-project use-profiles
+      - name: Bump build number
+        script: |
+          cd $CM_BUILD_DIR/mobile/ios
+          LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" || echo "0")
+          agvtool new-version -all $((${LATEST_BUILD:-0} + 1))
+      - name: Build IPA
+        script: |
+          cd mobile/ios
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME" \
+            --archive-flags "-destination 'generic/platform=iOS'"
+    artifacts:
+      - mobile/ios/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - mobile/ios/build/ios/archive/*.xcarchive
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - Internal Testers
+        submit_to_app_store: false

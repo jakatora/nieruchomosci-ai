@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:media="https://search.yahoo.com/mrss/" xmlns:atom="https://www.w3.org/2005/Atom">
+    <channel>
+        <title>RSS Ogłoszenia nieruchomości - Domiporta.pl</title>
+        <link>/nieruchomosci?RowsPerPage=25</link>
+        <atom:link href="http://www.domiporta.pl/rss" rel="self" type="application/rss+xml" />
+        <description>RSS Nieruchomości w Domiporta.pl.</description>
+        <language>pl-PL</language>
+        <item>
+            <title>Komfortowe mieszkanie 65 m2 z balkonem- 950 000 zł</title>
+            <link>/nieruchomosci/sprzedam-mieszkanie-warszawa-mokotow-65m2/156503731</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 14:00:32 GMT</pubDate>
+            <guid>/nieruchomosci/sprzedam-mieszkanie-warszawa-mokotow-65m2/156503731</guid>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/aa/bb/cc/1.jpg"><media:title type="plain">Mieszkanie 1</media:title></media:content>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/aa/bb/cc/2.jpg"><media:title type="plain">Mieszkanie 2</media:title></media:content>
+            <category domain="category">Mieszkanie</category>
+            <category domain="region">mazowieckie</category>
+            <category domain="poviat">warszawski</category>
+            <category domain="city">Warszawa</category>
+            <category domain="district">Mokotów</category>
+        </item>
+        <item>
+            <title>Apartament na wynajem 48 m2 z miejscem postojowym- 3 500 zł</title>
+            <link>/nieruchomosci/wynajme-mieszkanie-warszawa-wola-48m2/156503732</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 13:55:00 GMT</pubDate>
+            <guid>/nieruchomosci/wynajme-mieszkanie-warszawa-wola-48m2/156503732</guid>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/dd/ee/ff/1.jpg" />
+            <category domain="category">Mieszkanie</category>
+            <category domain="region">mazowieckie</category>
+            <category domain="poviat">warszawski</category>
+            <category domain="city">Warszawa</category>
+            <category domain="district">Wola</category>
+        </item>
+        <item>
+            <title>Przestronny dom 120 m2 z ogrodem- 550 000 zł</title>
+            <link>/nieruchomosci/sprzedam-dom-brzezowa-120m2/156503733</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 13:50:00 GMT</pubDate>
+            <guid>/nieruchomosci/sprzedam-dom-brzezowa-120m2/156503733</guid>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/gg/hh/ii/1.jpg" />
+            <category domain="category">Dom</category>
+            <category domain="region">Małopolskie</category>
+            <category domain="poviat">Myślenicki</category>
+            <category domain="community">Dobczyce</category>
+            <category domain="city">Brzezowa</category>
+        </item>
+        <item>
+            <title>Eleganckie mieszkanie 72 m2 w sercu miasta- 1 250 000 zł</title>
+            <link>/nieruchomosci/sprzedam-mieszkanie-krakow-stare-miasto-72m2/156503734</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 13:30:00 GMT</pubDate>
+            <guid>/nieruchomosci/sprzedam-mieszkanie-krakow-stare-miasto-72m2/156503734</guid>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/jj/kk/ll/1.jpg" />
+            <media:content url="https://galeria.domiporta.pl/pictures/big/jj/kk/ll/2.jpg" />
+            <media:content url="https://galeria.domiporta.pl/pictures/big/jj/kk/ll/3.jpg" />
+            <category domain="category">Mieszkanie</category>
+            <category domain="region">małopolskie</category>
+            <category domain="poviat">krakowski</category>
+            <category domain="city">Kraków</category>
+            <category domain="district">Stare Miasto</category>
+        </item>
+        <item>
+            <title>Nowoczesny lokal biurowy 80 m2 w prestiżowym Śródmieściu- 5 900 zł</title>
+            <link>/nieruchomosci/wynajme-biuro-warszawa-srodmiescie-80m2/156503735</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 13:20:00 GMT</pubDate>
+            <guid>/nieruchomosci/wynajme-biuro-warszawa-srodmiescie-80m2/156503735</guid>
+            <category domain="category">Lokal użytkowy</category>
+            <category domain="city">Warszawa</category>
+            <category domain="district">Śródmieście</category>
+        </item>
+        <item>
+            <title>Dwupokojowe mieszkanie 55 m2 z widokiem na morze- 720 000 zł</title>
+            <link>/nieruchomosci/sprzedam-mieszkanie-dwupokojowe-gdansk-wrzeszcz-55m2/156503736</link>
+            <description>Microsoft.AspNetCore.Mvc.Razor.HelperResult</description>
+            <pubDate>Sat, 23 May 2026 13:00:00 GMT</pubDate>
+            <guid>/nieruchomosci/sprzedam-mieszkanie-dwupokojowe-gdansk-wrzeszcz-55m2/156503736</guid>
+            <media:content url="https://galeria.domiporta.pl/pictures/big/mm/nn/oo/1.jpg" />
+            <category domain="category">Mieszkanie</category>
+            <category domain="region">pomorskie</category>
+            <category domain="poviat">Gdańsk</category>
+            <category domain="city">Gdańsk</category>
+            <category domain="district">Wrzeszcz</category>
+        </item>
+    </channel>
+</rss>

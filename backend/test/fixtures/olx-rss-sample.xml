@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>OLX.pl — Mieszkania na sprzedaż — Warszawa</title>
+    <link>https://www.olx.pl/d/nieruchomosci/mieszkania/sprzedaz/warszawa/</link>
+    <description>Najnowsze ogłoszenia</description>
+    <language>pl</language>
+    <item>
+      <title>Mieszkanie 2-pokojowe Warszawa, Mokotów</title>
+      <link>https://www.olx.pl/d/oferta/mieszkanie-2pok-mokotow-CID3-ID12345.html</link>
+      <guid isPermaLink="false">https://www.olx.pl/d/oferta/CID3-ID12345</guid>
+      <description>&lt;img src="https://ireland.apollo.olxcdn.com/img1.jpg"/&gt;&lt;br/&gt;&lt;img src="https://ireland.apollo.olxcdn.com/img2.jpg"/&gt;&lt;br/&gt;Mieszkanie 2-pokojowe na sprzedaż w Warszawie, dzielnica Mokotów. Cena: 850 000 zł. Powierzchnia: 48 m². Liczba pokoi: 2. Stan bardzo dobry, blok z 2015 roku.</description>
+      <pubDate>Wed, 21 May 2026 12:34:56 +0000</pubDate>
+      <category>Nieruchomości / Mieszkania / Sprzedaż / Warszawa, Mokotów</category>
+    </item>
+    <item>
+      <title>Kawalerka Wola, blisko metra</title>
+      <link>https://www.olx.pl/d/oferta/kawalerka-wola-CID3-ID67890.html</link>
+      <guid isPermaLink="false">https://www.olx.pl/d/oferta/CID3-ID67890</guid>
+      <description>&lt;img src="https://ireland.apollo.olxcdn.com/img3.jpg"/&gt;&lt;br/&gt;Nowoczesna kawalerka 28 m² na Woli, blisko stacji metra Rondo Daszyńskiego. Cena 525 000 zł. 1 pokój.</description>
+      <pubDate>Wed, 21 May 2026 11:22:33 +0000</pubDate>
+      <category>Nieruchomości / Mieszkania / Sprzedaż / Warszawa, Wola</category>
+    </item>
+    <item>
+      <title>3-pokojowe Bemowo, do remontu</title>
+      <link>https://www.olx.pl/d/oferta/3pok-bemowo-CID3-ID54321.html</link>
+      <guid isPermaLink="false">https://www.olx.pl/d/oferta/CID3-ID54321</guid>
+      <description>Mieszkanie 3-pokojowe Bemowo, 72 m kw., do generalnego remontu. Cena 680 000 PLN. Wielka płyta, 4. piętro.</description>
+      <pubDate>Wed, 21 May 2026 10:11:22 +0000</pubDate>
+      <category>Nieruchomości / Mieszkania / Sprzedaż / Warszawa, Bemowo</category>
+    </item>
+    <item>
+      <title>Ogłoszenie bez ceny — testowy edge case</title>
+      <link>https://www.olx.pl/d/oferta/bez-ceny-CID3-ID99999.html</link>
+      <guid isPermaLink="false">https://www.olx.pl/d/oferta/CID3-ID99999</guid>
+      <description>Mieszkanie do negocjacji — zapytaj o cenę. 55 m².</description>
+      <pubDate>Wed, 21 May 2026 09:00:00 +0000</pubDate>
+      <category>Nieruchomości / Mieszkania / Sprzedaż / Warszawa</category>
+    </item>
+  </channel>
+</rss>
