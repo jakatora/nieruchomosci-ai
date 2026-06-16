@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 90
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: Codemagic App Manager   # Key #2 W9Z5F63UJP (App Manager)
+      app_store_connect: codemagic   # Key #1 CFNP2M3CQV; globalny CERTIFICATE_PRIVATE_KEY w Team-level "Add to default" obsługuje signing
     environment:
       groups:
         - certificate_credentials                # CERTIFICATE_PRIVATE_KEY (Team-level globalny)
@@ -34,9 +34,11 @@ workflows:
         script: keychain initialize
       - name: Fetch signing files
         script: |
+          # Bez --create — reuse istniejacego globalnego cert J4Z32R232V
+          # Provisioning profile dla pl.nieruchomosciai.app trzeba zrobic manualnie
+          # w Apple Developer Portal raz (link do cert J4Z32R232V)
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
+            --type IOS_APP_STORE
       - name: Add certificates to keychain
         script: keychain add-certificates
       - name: Apply signing settings
