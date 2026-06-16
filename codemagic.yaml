@@ -3,12 +3,10 @@ workflows:
     name: NieruchomosciAI iOS — TestFlight
     max_build_duration: 90
     instance_type: mac_mini_m2
-    integrations:
-      app_store_connect: codemagic   # Key #1 CFNP2M3CQV; globalny CERTIFICATE_PRIVATE_KEY w Team-level "Add to default" obsługuje signing
     environment:
       groups:
-        - certificate_credentials                # CERTIFICATE_PRIVATE_KEY (Team-level globalny)
-        - app_store                              # APP_STORE_APPLE_ID (per-apka)
+        - app_store_credentials   # ASC API key + identifier + issuer (per-app, secure)
+        - app_store               # APP_STORE_APPLE_ID
       vars:
         BUNDLE_ID: "pl.nieruchomosciai.app"
         XCODE_WORKSPACE: "mobile/ios/NieruchomosciAI.xcworkspace"
@@ -34,11 +32,15 @@ workflows:
         script: keychain initialize
       - name: Fetch signing files
         script: |
-          # Bez --create — reuse istniejacego globalnego cert J4Z32R232V
-          # Provisioning profile dla pl.nieruchomosciai.app trzeba zrobic manualnie
-          # w Apple Developer Portal raz (link do cert J4Z32R232V)
+          # ASC API auth przez env vars (omija team integration)
+          echo "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/asc_api_key.p8
+          chmod 600 /tmp/asc_api_key.p8
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE
+            --type IOS_APP_STORE \
+            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID" \
+            --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
+            --private-key=@file:/tmp/asc_api_key.p8 \
+            --create
       - name: Add certificates to keychain
         script: keychain add-certificates
       - name: Apply signing settings
@@ -46,7 +48,10 @@ workflows:
       - name: Bump build number
         script: |
           cd $CM_BUILD_DIR/mobile/ios
-          LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" || echo "0")
+          LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" \
+            --issuer-id "$APP_STORE_CONNECT_ISSUER_ID" \
+            --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
+            --private-key=@file:/tmp/asc_api_key.p8 || echo "0")
           agvtool new-version -all $((${LATEST_BUILD:-0} + 1))
       - name: Build IPA
         script: |
@@ -61,7 +66,9 @@ workflows:
       - mobile/ios/build/ios/archive/*.xcarchive
     publishing:
       app_store_connect:
-        auth: integration
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
         beta_groups:
           - Internal Testers
