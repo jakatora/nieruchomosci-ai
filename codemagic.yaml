@@ -32,14 +32,17 @@ workflows:
         script: keychain initialize
       - name: Fetch signing files
         script: |
-          # ASC API auth przez env vars (omija team integration)
+          # ASC API auth + Distribution cert private key — oba przez env vars
           echo "$APP_STORE_CONNECT_PRIVATE_KEY" > /tmp/asc_api_key.p8
           chmod 600 /tmp/asc_api_key.p8
+          echo "$CERTIFICATE_PRIVATE_KEY" > /tmp/cert_key.pem
+          chmod 600 /tmp/cert_key.pem
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --issuer-id "$APP_STORE_CONNECT_ISSUER_ID" \
             --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" \
             --private-key=@file:/tmp/asc_api_key.p8 \
+            --certificate-key=@file:/tmp/cert_key.pem \
             --create
       - name: Add certificates to keychain
         script: keychain add-certificates
