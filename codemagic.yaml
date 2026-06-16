@@ -59,9 +59,14 @@ workflows:
       - name: Build IPA
         script: |
           cd mobile/ios
+          # Dynamic detect workspace + scheme (Expo prebuild moze sanityzowac nazwe)
+          WORKSPACE=$(ls -d *.xcworkspace 2>/dev/null | head -1)
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          echo "DEBUG: WORKSPACE=$WORKSPACE SCHEME=$SCHEME"
+          ls -la
           xcode-project build-ipa \
-            --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME" \
+            --workspace "$CM_BUILD_DIR/mobile/ios/$WORKSPACE" \
+            --scheme "$SCHEME" \
             --archive-flags "-destination 'generic/platform=iOS'"
     artifacts:
       - mobile/ios/build/ios/ipa/*.ipa
